@@ -64,7 +64,6 @@ stages:
         appName: $(WebAppName)
         azureSubscription: 'Resource Manager - Tailspin - Space Game'
         imageName: $(RegistryName)/$(webRepository):$(build.buildId)
-
     - task: KubernetesManifest@0
       displayName: Create imagePullSecret
       inputs:
@@ -73,7 +72,6 @@ stages:
         dockerRegistryEndpoint: 'Container Registry Connection'
         kubernetesServiceConnection: 'Kubernetes Cluster Connection'
         namespace: 'default'
-
     - task: KubernetesManifest@0
       displayName: Deploy to Kubernetes cluster
       inputs:
